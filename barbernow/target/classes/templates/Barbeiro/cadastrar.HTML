@@ -1,0 +1,129 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="widht=device-widht, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<title>BarberNow - Inserir Barbeiro</title>
+<meta name="author" content="BarberNow">
+<link rel="stylesheet" href="css/navbar.css">
+</head>
+<body>
+
+	<h4>Inserir Barbeiro</h4>
+	<hr>
+	<form method="post" action="/InsertBarbeiro" th:object="${barbeiro}">
+		<div class="row">
+			<div class="col-md-6 form-group offset-md-3">
+				<!-- <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}">
+					<label class="validation-message" th:errors="*{nome}"></label>
+				</div>-->
+				<label>Nome:</label> <input class="form-control"
+					placeHolder="Ex: Percy Jackson" th:field="*{nome}">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 form-group offset-md-3">
+				<!--<div class="col-md-6 form-group offset-md-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('valor')}">
+					<label class="validation-message" th:errors="*{valor}"></label>
+				</div>-->
+					<label>Email:</label> <input type="email" class="form-control"
+						placeHolder="Ex: example@example.com" th:field="*{email}">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 form-group offset-md-3">
+				<!--<div class="col-md-6 form-group offset-md-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('valor')}">
+					<label class="validation-message" th:errors="*{valor}"></label>
+				</div>-->
+					<label>Selecione o Gênero:</label> <select class="form-control"
+						th:field="*{genero}">
+						<option
+							th:each="genero : ${T(br.com.barbernow.enums.Genero).values()}"
+							th:value="${genero}" th:text="${genero}"></option>
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 form-group offset-md-3">
+				<!--<div class="col-md-6 form-group offset-md-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('valor')}">
+					<label class="validation-message" th:errors="*{valor}"></label>
+				</div>-->
+					<label>Idade:</label> <input class="form-control"
+						placeHolder="Ex: 15" th:field="*{idade}">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 form-group offset-md-3">
+				<!--<div class="col-md-6 form-group offset-md-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('valor')}">
+					<label class="validation-message" th:errors="*{valor}"></label>
+				</div>-->
+					<label>CPF:</label> <input class="form-control"
+						placeHolder="Ex: 111.222.333-44" th:field="*{cpf}">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 form-group offset-md-3">
+				<!--<div class="col-md-6 form-group offset-md-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('valor')}">
+					<label class="validation-message" th:errors="*{valor}"></label>
+				</div>-->
+					<label>Salário:</label> <input class="form-control"
+						placeHolder="Ex: 1500" th:field="*{salario}">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 form-group offset-md-3">
+				<!--<div class="col-md-6 form-group offset-md-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('valor')}">
+					<label class="validation-message" th:errors="*{valor}"></label>
+				</div>-->
+					<label>Login:</label> <input class="form-control"
+						placeHolder="Ex: riguinho" th:field="*{login}">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 form-group offset-md-3">
+				<!--<div class="col-md-6 form-group offset-md-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('valor')}">
+					<label class="validation-message" th:errors="*{valor}"></label>
+				</div>-->
+					<label>Senha:</label> <input type="password" class="form-control"
+						placeHolder="*******" th:field="*{senha}">
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<div class="row">
+			<button type="submit" class="btn btn-success offset-md-4">SALVAR</button>
+			<a class="btn btn-outline-danger">VOLTAR</a>
+		</div>
+	</form>
+
+	<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script src="webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
