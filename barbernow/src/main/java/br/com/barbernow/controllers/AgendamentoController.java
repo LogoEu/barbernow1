@@ -43,12 +43,19 @@ public class AgendamentoController {
 		return mv;
 	}
 	
+	@GetMapping("/excluirAgendamento/{id}")
+	public String excluirAgendamento(@PathVariable("id") Long id) {
+		agendamentoRepositorio.deleteById(id);
+		return "redirect:/agendamentoBarbeiro";
+	}
+	
 	@GetMapping("/inserirAgendamento")
 	public ModelAndView inserirAgendamento(Agendamento agendamento) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Agendamento/cadastrar");
 		mv.addObject("agendamento", new Agendamento());
 		mv.addObject("servicos", servicoRepositorio.findAll());
+		mv.addObject("clientes", clienteRepositorio.findAll());
 		return mv;
 	}
 	
@@ -69,6 +76,18 @@ public class AgendamentoController {
 		mv.setViewName("ViewCliente/agendamento");
 		mv.addObject("agendamento", new Servico());
 		mv.addObject("agendamentoList", agendamentoRepositorio.findAll());
+		return mv;
+	}
+	
+	@PostMapping("InsertAgendamento")
+	public ModelAndView insertAgendamento(Agendamento agendamento, Servico servico, Cliente cliente) throws ServiceExc {
+		
+		agendamento.setServico(servico);
+		agendamento.setClientes(cliente);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/agendamento");
+		agendamentoRepositorio.save(agendamento);
 		return mv;
 	}
 	
@@ -128,5 +147,22 @@ public class AgendamentoController {
 		agendamentoRepositorio.save(agendamento);
 		mv.setViewName("redirect:/agendamentoCliente");
 		return mv;
+	}
+	
+
+	//---------------------------------------- VIEW PARA Barbeiro -------------------------------------
+	@GetMapping("/agendamentoBarbeiro")
+	public ModelAndView agendamentoBarbeiro() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("ViewBarbeiro/agendamento");
+		mv.addObject("agendamento", new Servico());
+		mv.addObject("agendamentoList", agendamentoRepositorio.findAll());
+		return mv;
+	}
+	
+	@GetMapping("/excluirAgendamentoBarbeiro/{id}")
+	public String excluirBarbeiro(@PathVariable("id") Long id) {
+		agendamentoRepositorio.deleteById(id);
+		return "redirect:/agendamentoBarbeiro";
 	}
 }
