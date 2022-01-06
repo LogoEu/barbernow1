@@ -7,18 +7,20 @@
 <meta name="viewport" content="widht=device-widht, initial-scale=1.0">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<title>BarberNow - Inserir Serviço</title>
+<title>BarberNow - Editar Serviço</title>
 <meta name="author" content="BarberNow">
-<link rel="stylesheet" href="css/cadastro.css">
+<link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 	<div class="Login-Form">
 		<div class="container">
 			<div class="main-div">
 				<div class="texto-header">
-					<h4>Inserir Serviço</h4>
+					<h4>Alterar Serviço</h4>
 					<hr>
-					<form method="post" action="/InsertServicoBarbeiro" th:object="${servico}">
+					<form method="post" action="/alterarServicoBarbeiro"
+						th:object="${servico}">
+						<input type="hidden" th:field="*{id}">
 
 						<div class="form-group">
 							<label>Nome do Serviço:</label> <input class="form-control"
@@ -27,13 +29,12 @@
 
 						<div class="form-group">
 							<label>Valor do Serviço:</label> <input type="number"
-								class="form-control" placeHolder="Ex: 15,00" th:field="*{valor}">
+								class="form-control" placeHolder="Ex: 15" th:field="*{valor}">
 						</div>
 
-						
-							<button type="submit" class="btn btn-success">SALVAR</button>
-							<a th:href="@{servicoBarbeiro}" class="btn btn-outline-danger">VOLTAR</a>
-						
+						<button type="submit" class="btn btn-success">SALVAR</button>
+						<a th:href="@{servicoBarbeiro}" class="btn btn-outline-danger">VOLTAR</a>
+
 					</form>
 				</div>
 			</div>
